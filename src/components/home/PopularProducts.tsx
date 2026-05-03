@@ -1,16 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Heart, Star, MapPin, ArrowRight } from "lucide-react";
+import { Heart, Star, MapPin, ArrowRight, MessageSquare } from "lucide-react";
 import { getPopularProducts } from "@/lib/data";
 import { formatPrice } from "@/lib/utils";
 import { useMerkaiStore } from "@/lib/store";
+import { ReviewModal } from "@/components/product/ReviewModal";
 
 export function PopularProducts() {
   const popular = getPopularProducts();
   const { toggleFavorite, isFavorite } = useMerkaiStore();
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{ id: string; name: string } | null>(null);
+
+  const openReviewModal = (product: { id: string; name: string }) => {
+    setSelectedProduct(product);
+    setReviewModalOpen(true);
+  };
 
   return (
     <section className="merkai-container">
@@ -96,10 +105,34 @@ export function PopularProducts() {
                   }`}
                 />
               </button>
+
+              {/* Rate button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  openReviewModal({ id: product.id, name: product.name });
+                }}
+                className="absolute bottom-3 right-3 p-2 rounded-full bg-merkai-blue text-white shadow-sm hover:bg-merkai-blue-dark transition-colors"
+                title="Avaliar produto"
+              >
+                <MessageSquare className="w-4 h-4" />
+              </button>
             </div>
           </motion.div>
         ))}
       </div>
+
+      {selectedProduct && (
+        <ReviewModal
+          productId={selectedProduct.id}
+          productName={selectedProduct.name}
+          isOpen={reviewModalOpen}
+          onClose={() => {
+            setReviewModalOpen(false);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
     </section>
   );
 }

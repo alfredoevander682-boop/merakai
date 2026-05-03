@@ -15,10 +15,12 @@ import {
   Heart,
   Flame,
   X,
+  MessageSquare,
 } from "lucide-react";
 import { searchProducts, products } from "@/lib/data";
 import { formatPrice } from "@/lib/utils";
 import { useMerkaiStore } from "@/lib/store";
+import { ReviewModal } from "@/components/product/ReviewModal";
 
 function SearchSkeleton() {
   return (
@@ -63,6 +65,8 @@ function SearchContent() {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000000]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const { toggleFavorite, isFavorite } = useMerkaiStore();
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{ id: string; name: string } | null>(null);
 
   useEffect(() => {
     let filtered = searchProducts(query);
@@ -91,6 +95,11 @@ function SearchContent() {
   }, [query, selectedCategory, priceRange, sortBy]);
 
   const categories = [...new Set(products.map((p) => p.category))];
+
+  const openReviewModal = (product: { id: string; name: string }) => {
+    setSelectedProduct(product);
+    setReviewModalOpen(true);
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -314,6 +323,13 @@ function SearchContent() {
                   >
                     <Heart className={`w-4 h-4 ${isFavorite(product.id) ? "text-red-500 fill-red-500" : "text-gray-400"}`} />
                   </button>
+                  <button
+                    onClick={(e) => { e.preventDefault(); openReviewModal({ id: product.id, name: product.name }); }}
+                    className="absolute bottom-3 right-3 p-2 rounded-full bg-merkai-blue text-white shadow-sm hover:bg-merkai-blue-dark transition-colors"
+                    title="Avaliar produto"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -357,6 +373,18 @@ function SearchContent() {
             <h3 className="text-lg font-medium text-gray-600 mb-2">Nenhum resultado encontrado</h3>
             <p className="text-sm text-gray-400">Tente pesquisar com termos diferentes ou verifique os filtros.</p>
           </div>
+        )}
+
+        {selectedProduct && (
+          <ReviewModal
+            productId={selectedProduct.id}
+            productName={selectedProduct.name}
+            isOpen={reviewModalOpen}
+            onClose={() => {
+              setReviewModalOpen(false);
+              setSelectedProduct(null);
+            }}
+          />
         )}
       </div>
     </div>

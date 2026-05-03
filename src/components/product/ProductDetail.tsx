@@ -18,6 +18,7 @@ import {
 import { products } from "@/lib/data";
 import { formatPrice } from "@/lib/utils";
 import { useMerkaiStore } from "@/lib/store";
+import { ProductReviews } from "./ProductReviews";
 import type { Product } from "@/types";
 
 export function ProductDetail({ product }: { product: Product }) {
@@ -281,6 +282,13 @@ export function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
       )}
+
+      <ProductReviews
+        productId={product.id}
+        productName={product.name}
+        initialRating={product.rating}
+        initialReviewCount={product.reviewCount}
+      />
     </div>
   );
 }

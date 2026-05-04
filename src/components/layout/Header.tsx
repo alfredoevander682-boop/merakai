@@ -18,12 +18,12 @@ import {
 import { cn } from "@/lib/utils";
 import { useMerkaiStore } from "@/lib/store";
 
-const navLinks = [
-  { href: "/", label: "Início" },
-  { href: "/produtos", label: "Produtos" },
-  { href: "/servicos", label: "Serviços" },
-  { href: "/vendedor/cadastro", label: "Vender" },
-];
+  const navLinks = [
+    { href: "/", label: "Início" },
+    { href: "/produtos", label: "Produtos" },
+    { href: "/servicos", label: "Serviços" },
+    { href: "/vendedor/cadastro", label: "Torna‑te expositor" },
+  ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);

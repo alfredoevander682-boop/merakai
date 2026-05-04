@@ -26,7 +26,11 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+    <section className="relative pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/fundo_inicial.jpeg')" }}>
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-black/40" />
+        {/* Light gradient overlay (optional) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-merkai-blue/5 to-transparent pointer-events-none" />
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-merkai-blue/5 to-transparent pointer-events-none" />
 

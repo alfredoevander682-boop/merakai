@@ -1,1 +1,22 @@
-{"node":{"60fdf52656afd65a5a7ee2f6d26236cf05e7feba24":{"workers":{"app/_not-found/page":{"moduleId":"294","async":false},"app/admin/page":{"moduleId":"294","async":false},"app/admin/login/page":{"moduleId":"294","async":false},"app/conta/page":{"moduleId":"294","async":false},"app/favoritos/page":{"moduleId":"294","async":false},"app/vendedor/cadastro/page":{"moduleId":"294","async":false},"app/vendedor/dashboard/page":{"moduleId":"294","async":false},"app/vendedor/login/page":{"moduleId":"294","async":false},"app/pesquisa/page":{"moduleId":"294","async":false},"app/page":{"moduleId":"294","async":false},"app/servicos/page":{"moduleId":"294","async":false},"app/produtos/page":{"moduleId":"294","async":false},"app/dashboard/page":{"moduleId":"294","async":false},"app/categoria/[slug]/page":{"moduleId":"294","async":false},"app/termos/page":{"moduleId":"294","async":false},"app/sobre/page":{"moduleId":"294","async":false},"app/privacidade/page":{"moduleId":"294","async":false},"app/loja/[slug]/page":{"moduleId":"294","async":false},"app/produto/[id]/page":{"moduleId":"294","async":false}},"layer":{"app/_not-found/page":"action-browser","app/admin/page":"action-browser","app/admin/login/page":"action-browser","app/conta/page":"action-browser","app/favoritos/page":"action-browser","app/vendedor/cadastro/page":"action-browser","app/vendedor/dashboard/page":"action-browser","app/vendedor/login/page":"action-browser","app/pesquisa/page":"action-browser","app/page":"action-browser","app/servicos/page":"action-browser","app/produtos/page":"action-browser","app/dashboard/page":"action-browser","app/categoria/[slug]/page":"action-browser","app/termos/page":"action-browser","app/sobre/page":"action-browser","app/privacidade/page":"action-browser","app/loja/[slug]/page":"action-browser","app/produto/[id]/page":"action-browser"}}},"edge":{},"encryptionKey":"nkPQqfLeVVGeVZ91YBrXCxl0mKRCpDzqWCllE/UwbEY="}
+{
+  "node": {
+    "60fdf52656afd65a5a7ee2f6d26236cf05e7feba24": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CUSER%5C%5CDownloads%5C%5Cmerkai%5C%5Csrc%5C%5Clib%5C%5Cai.ts%22%2C%5B%7B%22id%22%3A%2260fdf52656afd65a5a7ee2f6d26236cf05e7feba24%22%2C%22exportedName%22%3A%22processAiQuery%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CUSER%5C%5CDownloads%5C%5Cmerkai%5C%5Csrc%5C%5Clib%5C%5Cai.ts%22%2C%5B%7B%22id%22%3A%2260fdf52656afd65a5a7ee2f6d26236cf05e7feba24%22%2C%22exportedName%22%3A%22processAiQuery%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/admin/login/page": "action-browser",
+        "app/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "nkPQqfLeVVGeVZ91YBrXCxl0mKRCpDzqWCllE/UwbEY="
+}

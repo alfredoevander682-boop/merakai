@@ -108,13 +108,13 @@ export default function SellerRegisterWizard() {
         <Card
           className={cn(
             "cursor-pointer hover:shadow-md transition-shadow",
-            formData.businessType === "Serviços Digitais" && "ring-2 ring-merkai-blue"
+            formData.businessType === "Prestação de Serviços" && "ring-2 ring-merkai-blue"
           )}
-          onClick={() => handleChange("businessType", "Serviços Digitais")}
+           onClick={() => handleChange("businessType", "Prestação de Serviços")}
         >
           <CardHeader className="flex flex-col items-center">
             <Wrench className="w-12 h-12 text-merkai-blue mb-2" />
-            <CardTitle>🔧 Serviços Digitais</CardTitle>
+            <CardTitle>🔧 Prestação de Serviços</CardTitle>
           </CardHeader>
         </Card>
       </div>

@@ -104,10 +104,13 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-merkai-blue text-white px-6 py-4">
-        <h1 className="text-xl font-bold">Painel Administrativo MERKAI</h1>
-        <p className="text-sm text-white/80">Area restrita</p>
-      </div>
+<div className="bg-merkai-blue text-white px-6 py-4 flex items-center justify-between">
+          <h1 className="text-xl font-bold">Painel Administrativo MERKAI</h1>
+          <button onClick={async () => {
+            await fetch('/api/admin/logout', { method: 'POST' });
+            window.location.href = '/admin/login';
+          }} className="text-sm bg-white text-merkai-blue px-3 py-1 rounded-full hover:bg-gray-100 transition-colors">Sair</button>
+        </div>
 
       <div className="flex">
         <aside className="w-64 bg-white border-r min-h-screen p-4">

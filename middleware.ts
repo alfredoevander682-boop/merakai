@@ -1,22 +1,27 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+// @ts-ignore
+import jwt from "jsonwebtoken";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Admin protection - only block in production if ADMIN_EMAILS is set
-  if (pathname.startsWith("/admin") && process.env.NODE_ENV === "production") {
-    const adminEmails = process.env.ADMIN_EMAILS || "";
-    if (adminEmails) {
-      const authHeader = request.headers.get("authorization");
-      if (!authHeader) {
-        return NextResponse.redirect(new URL("/", request.url));
+  // Admin routes: protect all /admin/* except /admin/login and /admin/logout
+  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login") && !pathname.startsWith("/admin/logout")) {
+    const token = request.cookies.get("admin-token");
+    const adminEmails = (process.env.ADMIN_EMAILS || "").split(",").map(e => e.trim().toLowerCase()).filter(Boolean);
+    if (!token) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+    try {
+      const payload = jwt.verify(token.value, process.env.JWT_SECRET || "");
+      // @ts-ignore - payload could be any
+      const email = (payload as any).email?.toLowerCase();
+      if (!adminEmails.includes(email)) {
+        return NextResponse.redirect(new URL("/admin/login", request.url));
       }
-      const allowedEmails = adminEmails.split(",").map(e => e.trim().toLowerCase());
-      const userEmail = authHeader.replace("Bearer ", "").toLowerCase();
-      if (!allowedEmails.includes(userEmail)) {
-        return NextResponse.redirect(new URL("/", request.url));
-      }
+    } catch (err) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
     }
   }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Star, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { ReviewModal } from "./ReviewModal";
 import { ReviewList } from "./ReviewList";
 
@@ -45,6 +45,7 @@ export function ProductReviews({ productId, productName, initialRating = 0, init
 
   useEffect(() => {
     fetchReviews();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
   const handleSuccess = () => {

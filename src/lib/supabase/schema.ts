@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar, text, integer, boolean, timestamp, jsonb, real, uniqueIndex } from "drizzle-orm/pg-core";
+import { pgTable, serial, varchar, text, integer, boolean, timestamp, jsonb, real } from "drizzle-orm/pg-core";
 
 export const stores = pgTable("stores", {
   id: serial("id").primaryKey(),
@@ -96,6 +96,4 @@ export const reviews = pgTable("reviews", {
   rating: integer("rating").notNull(),
   comment: text("comment"),
   createdAt: timestamp("created_at").defaultNow(),
-}, (table) => ({
-  uniqueProductEmail: unique({ name: "reviews_product_email_unique", columns: [table.productId, table.email] }),
-}));
+});

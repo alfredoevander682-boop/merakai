@@ -82,12 +82,17 @@ export default function AdminDashboard() {
     }
   };
 
-  const tabs = [
+  const getBadge = (id: Tab) => {
+    if (id === "sellers") return pendingSellers.length;
+    return 0;
+  };
+
+  const tabs: { id: Tab; label: string; icon: typeof FileText }[] = [
     { id: "overview", label: "Visao Geral", icon: FileText },
-    { id: "sellers", label: "Solicitacoes", icon: Users, badge: pendingSellers.length },
+    { id: "sellers", label: "Solicitacoes", icon: Users },
     { id: "products", label: "Produtos", icon: Package },
     { id: "orders", label: "Pedidos", icon: ShoppingCart },
-  ] as const;
+  ];
 
   if (loading) {
     return (
@@ -119,9 +124,9 @@ export default function AdminDashboard() {
               >
                 <tab.icon className="w-5 h-5" />
                 <span className="flex-1">{tab.label}</span>
-                {tab.badge && tab.badge > 0 && (
+                {getBadge(tab.id) > 0 && (
                   <span className="bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full">
-                    {tab.badge}
+                    {getBadge(tab.id)}
                   </span>
                 )}
               </button>

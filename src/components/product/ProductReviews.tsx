@@ -45,7 +45,6 @@ export function ProductReviews({ productId, productName, initialRating = 0, init
   useEffect(() => {
     fetchReviews();
     
-    // Listen for custom event to open modal
     const handleOpenModal = (e: CustomEvent) => {
       setIsModalOpen(true);
     };
@@ -54,7 +53,6 @@ export function ProductReviews({ productId, productName, initialRating = 0, init
     return () => {
       window.removeEventListener('openReviewModal', handleOpenModal as EventListener);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
   const handleSuccess = () => {

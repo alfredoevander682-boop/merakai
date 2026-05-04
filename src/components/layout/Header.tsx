@@ -22,7 +22,7 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/produtos", label: "Produtos" },
   { href: "/servicos", label: "Serviços" },
-  { href: "/vendedor", label: "Vender" },
+  { href: "/vendedor/cadastro", label: "Vender" },
 ];
 
 export function Header() {

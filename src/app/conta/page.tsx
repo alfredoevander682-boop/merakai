@@ -11,7 +11,7 @@ export default function ContaPage() {
       <p className="text-gray-500 mb-8">Escolha como quer usar o MERKAI</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-        <Link href="/vendedor">
+        <Link href="/vendedor/cadastro">
           <motion.div whileHover={{ y: -4 }} className="p-8 rounded-3xl bg-gradient-to-br from-merkai-blue to-merkai-blue-light text-white cursor-pointer">
             <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
               <Store className="w-7 h-7" />

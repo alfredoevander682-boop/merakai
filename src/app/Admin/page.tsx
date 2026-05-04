@@ -83,8 +83,8 @@ export default function AdminDashboard() {
   };
 
   const tabs = [
-    { id: "overview", label: "Visão Geral", icon: FileText },
-    { id: "sellers", label: "Solicitações", icon: Users, badge: pendingSellers.length },
+    { id: "overview", label: "Visao Geral", icon: FileText },
+    { id: "sellers", label: "Solicitacoes", icon: Users, badge: pendingSellers.length },
     { id: "products", label: "Produtos", icon: Package },
     { id: "orders", label: "Pedidos", icon: ShoppingCart },
   ] as const;
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-merkai-blue text-white px-6 py-4">
         <h1 className="text-xl font-bold">Painel Administrativo MERKAI</h1>
-        <p className="text-sm text-white/80">Área restrita</p>
+        <p className="text-sm text-white/80">Area restrita</p>
       </div>
 
       <div className="flex">
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
         <main className="flex-1 p-6">
           {activeTab === "overview" && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">Visão Geral</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Visao Geral</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white p-6 rounded-2xl shadow-card">
                   <div className="flex items-center gap-4">
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
                     </div>
                     <div>
                       <p className="text-2xl font-bold">{stats.totalUsers}</p>
-                      <p className="text-sm text-gray-500">Total Usuários</p>
+                      <p className="text-sm text-gray-500">Total Usuarios</p>
                     </div>
                   </div>
                 </div>
@@ -184,11 +184,11 @@ export default function AdminDashboard() {
 
           {activeTab === "sellers" && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">Solicitações de Vendedores</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Solicitacoes de Vendedores</h2>
               {pendingSellers.length === 0 ? (
                 <div className="bg-white rounded-2xl p-12 text-center">
                   <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500">Nenhuma solicitação pendente</p>
+                  <p className="text-gray-500">Nenhuma solicitacao pendente</p>
                 </div>
               ) : (
                 <div className="space-y-3">

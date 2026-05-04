@@ -97,3 +97,19 @@ export const reviews = pgTable("reviews", {
   comment: text("comment"),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const sellers = pgTable("sellers", {
+  id: serial("id").primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  password: varchar("password", { length: 255 }).notNull(),
+  businessName: varchar("business_name", { length: 255 }).notNull(),
+  nif: varchar("nif", { length: 20 }).notNull(),
+  businessType: varchar("business_type", { length: 50 }),
+  phone: varchar("phone", { length: 50 }),
+  city: varchar("city", { length: 100 }),
+  status: varchar("status", { length: 20 }).default("PENDING"),
+  rejectedReason: text("rejected_reason"),
+  approvedAt: timestamp("approved_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});

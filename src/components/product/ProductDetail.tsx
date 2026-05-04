@@ -14,6 +14,8 @@ import {
   Store,
   Check,
   MessageCircle,
+  Star as StarIcon,
+  MessageSquare,
 } from "lucide-react";
 import { products } from "@/lib/data";
 import { formatPrice } from "@/lib/utils";
@@ -144,6 +146,15 @@ export function ProductDetail({ product }: { product: Product }) {
               </p>
             )}
           </div>
+
+          {/* Avaliar Button */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('openReviewModal', { detail: { productId: product.id, productName: product.name } }))}
+            className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-2xl font-bold hover:from-amber-500 hover:to-orange-600 transition-all flex items-center justify-center gap-2 shadow-lg"
+          >
+            <MessageSquare className="w-5 h-5" />
+            Avaliar este Produto
+          </button>
 
           {/* Availability */}
           <div className="flex items-center gap-2 text-sm">

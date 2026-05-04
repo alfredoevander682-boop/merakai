@@ -43,7 +43,15 @@ export default function SellerRegisterPage() {
       const res = await fetch("/api/seller/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          businessName: formData.businessName,
+          nif: formData.nif,
+          businessType: formData.businessType,
+          phone: formData.phone,
+          city: formData.city,
+        }),
       });
 
       const data = await res.json();
